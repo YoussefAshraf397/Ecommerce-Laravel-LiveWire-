@@ -54,37 +54,41 @@
 
                 </div><!--end wrap shop control-->
 
-                <div class="row">
 
+                @if($products->count()>0)
+                <div class="row">
                     <ul class="product-list grid-products equal-container">
 
                         @foreach($products as $product)
-                        <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                            <div class="product product-style-3 equal-elem ">
-                                <div class="product-thumnail">
-                                    <a href="{{route('product.detail' ,['slug' => $product->slug ])}}" title="{{$product->name}}">
-                                        <figure><img src="{{asset('assets/images/products/'.$product->image)}}" alt="{{$product->name}}"></figure>
-                                    </a>
+                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="product product-style-3 equal-elem ">
+                                    <div class="product-thumnail">
+                                        <a href="{{route('product.detail' ,['slug' => $product->slug ])}}" title="{{$product->name}}">
+                                            <figure><img src="{{asset('assets/images/products/'.$product->image)}}" alt="{{$product->name}}"></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="#" class="product-name"><span>{{$product->name}}</span></a>
+                                        <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="Store('{{$product->id}}','{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
+                                    </div>
                                 </div>
-                                <div class="product-info">
-                                    <a href="#" class="product-name"><span>{{$product->name}}</span></a>
-                                    <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
-                                    <a href="#" class="btn add-to-cart" wire:click.prevent="Store('{{$product->id}}','{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
                         @endforeach
 
                     </ul>
-
                 </div>
+                @else
+                    <p style="padding-top: 30px ; font-weight: bold">No Products</p>
+
+                @endif
 
                 <div class="wrap-pagination-info">
                     <ul class="page-numbers">
                         @foreach($products->links()->elements[0] as $index=>$link)
-                                <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>
+                            <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>
                         @endforeach
-{{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
+                        {{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
                     </ul>
                     <p class="result-count">Showing {{$products->lastItem()}} of {{$products->total()}} result</p>
                 </div>

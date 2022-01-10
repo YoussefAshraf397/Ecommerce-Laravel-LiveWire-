@@ -5,7 +5,9 @@
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
+                <li class="item-link"><span>Product Categories</span></li>
+                <li class="item-link"><span>{{$categoryName}}</span></li>
+
             </ul>
         </div>
         <div class="row">
@@ -20,7 +22,7 @@
 
                 <div class="wrap-shop-control">
 
-                    <h1 class="shop-title">Digital & Electronics</h1>
+                    <h1 class="shop-title">{{$categoryName}}</h1>
 
                     <div class="wrap-right">
 
@@ -82,9 +84,9 @@
                 <div class="wrap-pagination-info">
                     <ul class="page-numbers">
                         @foreach($products->links()->elements[0] as $index=>$link)
-                                <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>
+                            <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>
                         @endforeach
-{{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
+                        {{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
                     </ul>
                     <p class="result-count">Showing {{$products->lastItem()}} of {{$products->total()}} result</p>
                 </div>

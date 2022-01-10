@@ -75,6 +75,10 @@
                                                         <li class="menu-item" >
                                                             <a title="Dashboard" href="{{route('admin.dashboard')}}">Dashboard</a>
                                                         </li>
+                                                        <li class="menu-item">
+                                                            <a title="categories" href="{{route('admin.categories')}}">Categories</a>
+
+                                                        </li>
                                                         <form method="POST" action="{{route('logout')}}">
                                                             @csrf
                                                             <li class="menu-item" >
@@ -119,39 +123,7 @@
                     <div class="wrap-logo-top left-section">
                         <a href="/" class="link-to-home"><img style="height: 100px" src="{{asset('assets/images/pngwing.com.png')}}" alt="mercado"></a>
                     </div>
-
-                    <div class="wrap-search center-section">
-                        <div class="wrap-search-form">
-                            <form action="#" id="form-search-top" name="form-search-top">
-                                <input type="text" name="search" value="" placeholder="Search here...">
-                                <button form="form-search-top" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                <div class="wrap-list-cate">
-                                    <input type="hidden" name="product-cate" value="0" id="product-cate">
-                                    <a href="#" class="link-control">All Category</a>
-                                    <ul class="list-cate">
-                                        <li class="level-0">All Category</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                    </ul>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                    @livewire('header-search-component')
                     <div class="wrap-icon right-section">
                         <div class="wrap-icon-section wishlist">
                             <a href="#" class="link-direction">
@@ -486,7 +458,7 @@
 <script src="{{asset('assets/js/jquery-ui-1.12.4.minb8ff.js?ver=1.12.4')}}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.flexslider.js')}}"></script>
-<script src="{{asset('assets/js/chosen.jquery.min.js')}}"></script>
+{{--<script src="{{asset('assets/js/chosen.jquery.min.js')}}"></script>--}}
 <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
