@@ -36,5 +36,9 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->group(function ()
     Route::get('/admin/product/add' , \App\Http\Livewire\Admin\AdminAddProductComponent::class)->name('admin.addproduct');
     Route::get('/admin/product/edit/{product_slug}' , \App\Http\Livewire\Admin\AdminEditProductComponent::class)->name('admin.editproduct');
 
+    Route::get('/admin/slider' , \App\Http\Livewire\Admin\AdminHomeSliderComponent::class)->name('admin.homeslider');
+    Route::get('admin/slider/add' , \App\Http\Livewire\Admin\AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
+    Route::get('admin/slider/edit/{slider_id}' , \App\Http\Livewire\Admin\AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
+
 
 });
