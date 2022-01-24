@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/chosen.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/color-01.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     @livewireStyles
 
 </head>
@@ -82,8 +84,12 @@
                                                             <a title="products" href="{{route('admin.products')}}">Products</a>
                                                         </li>
                                                         <li class="menu-item">
-                                                            <a title="products" href="{{route('admin.homeslider')}}">Home Sliders</a>
+                                                            <a title="sliders" href="{{route('admin.homeslider')}}">Home Sliders</a>
                                                         </li>
+                                                        <li class="menu-item">
+                                                            <a title="mange home categories" href="{{route('admin.homecategories')}}">Home Categories</a>
+                                                        </li>
+
                                                         <form method="POST" action="{{route('logout')}}">
                                                             @csrf
                                                             <li class="menu-item" >
@@ -468,7 +474,11 @@
 <script src="{{asset('assets/js/jquery.countdown.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
 <script src="{{asset('assets/js/functions.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 @livewireScripts
+
+@stack('scripts')
 
 </body>
 </html>
