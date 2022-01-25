@@ -83,15 +83,17 @@
 
                 @endif
 
-                <div class="wrap-pagination-info">
-                    <ul class="page-numbers">
-                        @foreach($products->links()->elements[0] as $index=>$link)
-                            <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>
-                        @endforeach
-                        {{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
-                    </ul>
-                    <p class="result-count">Showing {{$products->lastItem()}} of {{$products->total()}} result</p>
-                </div>
+{{--                <div class="wrap-pagination-info">--}}
+{{--                    <ul class="page-numbers">--}}
+{{--                        @foreach($products->links()->elements[0] as $index=>$link)--}}
+{{--                            <a href="{{$link}}"> <li><span class="page-number-item {{Request::get('page') == $index ? 'current' : ''}}">{{$index}}</span></li></a>--}}
+{{--                        @endforeach--}}
+{{--                        --}}{{--                        <li><a class="page-number-item next-link" href="#" >Next</a></li>--}}
+{{--                    </ul>--}}
+{{--                    <p class="result-count">Showing {{$products->lastItem()}} of {{$products->total()}} result</p>--}}
+{{--                </div>--}}
+                {{$products->links("pagination::bootstrap-4")}}
+
             </div><!--end main products area-->
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
