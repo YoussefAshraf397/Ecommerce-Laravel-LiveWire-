@@ -53,8 +53,41 @@ class AdminEditProductComponent extends Component
         $this->slug = Str::slug($this->name , '-');
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields , [
+            'name' => 'required' ,
+            'slug' => 'required | unique:categories' ,
+            'short_description' => 'required' ,
+            'description' => 'required' ,
+            'regular_price' => 'required | numeric' ,
+            'sale_price' => 'required | numeric' ,
+            'sku' => 'required' ,
+            'stock_status' => 'required' ,
+            'featured' => 'required' ,
+            'quantity' => 'required | numeric' ,
+            'image' => 'required | mimes:jpeg,png' ,
+            'category_id' => 'required'
+        ]);
+    }
+
     public function editProduct()
     {
+        $this->validate([
+            'name' => 'required' ,
+            'slug' => 'required | unique:categories' ,
+            'short_description' => 'required' ,
+            'description' => 'required' ,
+            'regular_price' => 'required | numeric' ,
+            'sale_price' => 'required | numeric' ,
+            'sku' => 'required' ,
+            'stock_status' => 'required' ,
+            'featured' => 'required' ,
+            'quantity' => 'required | numeric' ,
+            'image' => 'required | mimes:jpeg,png' ,
+            'category_id' => 'required'
+        ]);
+
         $product = Product::find($this->productId);
 
         $product->name = $this->name ;
