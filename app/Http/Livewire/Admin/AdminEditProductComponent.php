@@ -66,7 +66,7 @@ class AdminEditProductComponent extends Component
             'stock_status' => 'required' ,
             'featured' => 'required' ,
             'quantity' => 'required | numeric' ,
-            'image' => 'required | mimes:jpeg,png' ,
+            'image' => 'required' ,
             'category_id' => 'required'
         ]);
     }
@@ -84,7 +84,7 @@ class AdminEditProductComponent extends Component
             'stock_status' => 'required' ,
             'featured' => 'required' ,
             'quantity' => 'required | numeric' ,
-            'image' => 'required | mimes:jpeg,png' ,
+            'image' => 'required' ,
             'category_id' => 'required'
         ]);
 
