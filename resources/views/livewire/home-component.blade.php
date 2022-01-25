@@ -34,27 +34,31 @@
         </div>
 
         <!--On Sale-->
-        @if($saleProducts->count() > 0)
-        <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">On Sale</h3>
-            <div class="wrap-countdown mercado-countdown" data-expire="2020/12/12 12:34:56"></div>
-            <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
-               @foreach($saleProducts as $salProduct)
-                    <div class="product product-style-2 equal-elem ">
-                        <div class="product-thumnail">
-                            <a href="{{route('product.detail' ,['slug' => $salProduct->slug ])}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
-                                <figure><img src="{{asset('assets/images/products'.'/'.$salProduct->image)}}" width="800" height="800" alt="{{$salProduct->name}}"></figure>
-                            </a>
+        @if($saleProducts->count() > 0  && $sale->status == 1 && $sale->sale_date > \Carbon\Carbon::now())
+            <div class="wrap-show-advance-info-box style-1 has-countdown">
+                <h3 class="title-box">On Sale</h3>
+                <div class="wrap-countdown mercado-countdown" data-expire="{{\Carbon\Carbon::parse($sale->sale_date)->format("Y/m/d h:m:s") }}"></div>
+                <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                   @foreach($saleProducts as $salProduct)
+                        <div class="product product-style-2 equal-elem ">
+                            <div class="product-thumnail">
+                                <a href="{{route('product.detail' ,['slug' => $salProduct->slug ])}}" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                    <figure><img src="{{asset('assets/images/products'.'/'.$salProduct->image)}}" width="800" height="800" alt="{{$salProduct->name}}"></figure>
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <a href="{{route('product.detail' ,['slug' => $salProduct->slug ])}}" class="product-name"><span>{{$salProduct->name}}</span></a>
+
+                                <div class="wrap-price"><ins><p class="product-price">${{$salProduct->sale_price}}</p></ins><del><p class="product-price">${{$salProduct->regular_price}}</p></del></div>
+
+                            </div>
+
                         </div>
-                        <div class="product-info">
-                            <a href="{{route('product.detail' ,['slug' => $salProduct->slug ])}}" class="product-name"><span>{{$salProduct->name}}</span></a>
-                            <div class="wrap-price"><ins><p class="product-price">${{$salProduct->sale_price}}</p></ins><del><p class="product-price">${{$salProduct->regular_price}}</p></del></div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
+
 
         <!--Latest Products-->
         <div class="wrap-show-advance-info-box style-1">
