@@ -44,5 +44,7 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->group(function ()
 
     Route::get('admin/sale' , \App\Http\Livewire\Admin\AdminSaleComponent::class)->name('admin.sale');
 
+    Route::get('/wishlist' , \App\Http\Livewire\WishlistComponent::class)->name('product.wishlist');
+
 
 });

@@ -1,7 +1,5 @@
 <main id="main" class="main-site left-sidebar">
-
     <div class="container">
-
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="/" class="link">home</a></li>
@@ -79,7 +77,6 @@
                     }
                 </style>
                 <div class="row">
-
                     <ul class="product-list grid-products equal-container">
                         @php
                           $wishItems =  Cart::instance('wishlist')->content()->pluck('id');
@@ -110,7 +107,6 @@
                         @endforeach
 
                     </ul>
-
                 </div>
 
 {{--                <div class="wrap-pagination-info">--}}
