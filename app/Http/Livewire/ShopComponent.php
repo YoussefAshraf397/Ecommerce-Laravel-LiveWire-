@@ -37,7 +37,7 @@ class ShopComponent extends Component
     public function addToWishList($product_id  , $product_name , $product_price)
     {
         Cart::instance('wishlist')->add($product_id , $product_name , 1 , (float)$product_price)->associate('App\Models\Product');
-
+        $this->emitTo('wishlist-count-component' , 'refreshComponent');
     }
 
     use WithPagination  ;

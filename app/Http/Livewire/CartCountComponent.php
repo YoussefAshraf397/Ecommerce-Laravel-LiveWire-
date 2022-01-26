@@ -4,12 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class WishlistCountComponent extends Component
+class CartCountComponent extends Component
 {
     protected $listeners = ['refreshComponent' => '$refresh'];
 
     public function render()
     {
-        return view('livewire.wishlist-count-component');
+        return view('livewire.cart-count-component');
     }
 }
