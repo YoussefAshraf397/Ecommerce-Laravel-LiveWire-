@@ -19,6 +19,8 @@ Route::get('/checkout' , \App\Http\Livewire\CheckoutComponent::class);
 Route::get('/product/{slug}' , \App\Http\Livewire\DetailsComponent::class)->name('product.detail');
 Route::get('/product-category/{category_slug}' , \App\Http\Livewire\CategoryComponent::class)->name('product.category');
 Route::get('/search' , \App\Http\Livewire\SearchComponent::class)->name('product.search');
+Route::get('/wishlist' , \App\Http\Livewire\WishlistComponent::class)->name('product.wishlist');
+
 
 // for user or custmoer
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
@@ -44,7 +46,8 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->group(function ()
 
     Route::get('admin/sale' , \App\Http\Livewire\Admin\AdminSaleComponent::class)->name('admin.sale');
 
-    Route::get('/wishlist' , \App\Http\Livewire\WishlistComponent::class)->name('product.wishlist');
-
+    Route::get('/admin/coupons' , \App\Http\Livewire\Admin\AdminCouponComponent::class)->name('admin.coupons');
+    Route::get('/admin/coupon/add' , \App\Http\Livewire\Admin\AdminAddCouponComponent::class)->name('admin.addcoupon');
+    Route::get('/admin/coupon/edit/{coupon_id}' , \App\Http\Livewire\Admin\AdminEditCouponComponent::class)->name('admin.editcoupon');
 
 });

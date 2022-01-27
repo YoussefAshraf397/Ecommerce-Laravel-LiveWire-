@@ -92,6 +92,9 @@
                                                         <li class="menu-item">
                                                             <a title="sale-setting" href="{{route('admin.sale')}}">Sale Setting</a>
                                                         </li>
+                                                        <li class="menu-item">
+                                                            <a title="coupons" href="{{route('admin.coupons')}}">All Coupons</a>
+                                                        </li>
 
                                                         <form method="POST" action="{{route('logout')}}">
                                                             @csrf
