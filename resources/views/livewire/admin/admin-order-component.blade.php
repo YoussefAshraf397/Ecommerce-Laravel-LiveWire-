@@ -31,9 +31,10 @@
                                 <th>Last Name</th>
                                 <th>Mobile</th>
                                 <th>Email</th>
-                                <th>Zip Code</th>
+                                <th>ZipCode</th>
                                 <th>Status</th>
                                 <th>Order Date</th>
+                                <th>Action</th>
                             </tr>
                             <tbody>
                             @foreach($orders as $order)
@@ -50,6 +51,7 @@
                                     <td>{{$order->zipcode}}</td>
                                     <td>{{$order->status}}</td>
                                     <td>{{$order->created_at}}</td>
+                                    <td><a href="{{route('admin.orderdetail' , ['order_id' =>$order->id])}}" class="btn btn-info btn-sm">Details</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
