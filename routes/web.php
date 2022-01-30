@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/' , \App\Http\Livewire\HomeComponent::class);
 Route::get('/shop' , \App\Http\Livewire\ShopComponent::class);
 Route::get('/cart' , \App\Http\Livewire\CartComponent::class)->name('product.cart');
-Route::get('/checkout' , \App\Http\Livewire\CheckoutComponent::class);
+Route::get('/checkout' , \App\Http\Livewire\CheckoutComponent::class)->name('checkout');
 Route::get('/product/{slug}' , \App\Http\Livewire\DetailsComponent::class)->name('product.detail');
 Route::get('/product-category/{category_slug}' , \App\Http\Livewire\CategoryComponent::class)->name('product.category');
 Route::get('/search' , \App\Http\Livewire\SearchComponent::class)->name('product.search');
 Route::get('/wishlist' , \App\Http\Livewire\WishlistComponent::class)->name('product.wishlist');
 
+Route::get('thank-you' , \App\Http\Livewire\ThankYouComponent::class)->name('thankyou');
 
 // for user or custmoer
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
