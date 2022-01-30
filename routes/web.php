@@ -27,6 +27,9 @@ Route::get('thank-you' , \App\Http\Livewire\ThankYouComponent::class)->name('tha
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/user/dashboard' , \App\Http\Livewire\UserDashboardComponent::class)->name('user.dashboard');
 
+    Route::get('/user/orders' , \App\Http\Livewire\User\UserOrdersComponent::class)->name('user.orders');
+    Route::get('/user/orders/{order_id}' , \App\Http\Livewire\User\UserOrderDetailsComponent::class)->name('user.orderdetail');
+
 });
 
 // for Admin
