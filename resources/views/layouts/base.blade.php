@@ -115,7 +115,10 @@
                                                             <a title="Dashboard" href="{{route('user.dashboard')}}">Dashboard</a>
                                                         </li>
                                                         <li class="menu-item" >
-                                                            <a title="Dashboard" href="{{route('user.orders')}}">My Orders</a>
+                                                            <a title="orders" href="{{route('user.orders')}}">My Orders</a>
+                                                        </li>
+                                                        <li class="menu-item" >
+                                                            <a title="change password" href="{{route('user.changepassword')}}">Change Password</a>
                                                         </li>
                                                         <form method="POST" action="{{route('logout')}}">
                                                             @csrf

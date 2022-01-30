@@ -32,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 
     Route::get('/user/review/{order_item_id}' , \App\Http\Livewire\User\UserReviewComponent::class)->name('user.review');
 
+    Route::get('/user/change-password' , \App\Http\Livewire\User\UserChangePasswordComponent::class)->name('user.changepassword');
+
 });
 
 // for Admin
