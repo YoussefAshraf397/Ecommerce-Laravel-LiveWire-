@@ -23,7 +23,7 @@ class AuthAdmin
         }
         else
         {
-            session()->flash();
+            session()->flash('admin_error' , 'You Are Not Allowed To Be Here');
             return redirect()->route('login');
         }
     }
