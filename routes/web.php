@@ -23,6 +23,9 @@ Route::get('/wishlist' , \App\Http\Livewire\WishlistComponent::class)->name('pro
 
 Route::get('thank-you' , \App\Http\Livewire\ThankYouComponent::class)->name('thankyou');
 
+Route::get('/contact-us' , \App\Http\Livewire\ContactComponent::class)->name('contact');
+
+
 // for user or custmoer
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/user/dashboard' , \App\Http\Livewire\UserDashboardComponent::class)->name('user.dashboard');
@@ -33,7 +36,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/user/review/{order_item_id}' , \App\Http\Livewire\User\UserReviewComponent::class)->name('user.review');
 
     Route::get('/user/change-password' , \App\Http\Livewire\User\UserChangePasswordComponent::class)->name('user.changepassword');
-
 });
 
 // for Admin
@@ -60,6 +62,8 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->group(function ()
 
     Route::get('/admin/orders' , \App\Http\Livewire\Admin\AdminOrderComponent::class)->name('admin.orders');
     Route::get('/admin/orders/{order_id}' , \App\Http\Livewire\Admin\AdminOrderDetailsComponent::class)->name('admin.orderdetail');
+
+    Route::get('/admin/contact-us' , \App\Http\Livewire\Admin\AdminContactComponent::class)->name('admin.contact');
 
 
 

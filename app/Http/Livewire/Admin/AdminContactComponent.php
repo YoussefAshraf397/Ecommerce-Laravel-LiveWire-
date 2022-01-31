@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Contact;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AdminContactComponent extends Component
 {
+    use WithPagination;
     public function render()
     {
-        return view('livewire.admin.admin-contact-component');
+        $contacts = Contact::paginate(10);
+        return view('livewire.admin.admin-contact-component' , ['contacts' => $contacts])->layout('layouts.base');
     }
 }

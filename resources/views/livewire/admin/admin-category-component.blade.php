@@ -1,6 +1,6 @@
 <div>
     <style>
-        nav sg{
+        nav svg{
             height: 20px;
         }
         nav .hidden{
