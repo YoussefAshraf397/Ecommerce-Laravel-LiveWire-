@@ -65,6 +65,9 @@ Route::middleware(['auth:sanctum', 'verified' , 'authadmin'])->group(function ()
 
     Route::get('/admin/contact-us' , \App\Http\Livewire\Admin\AdminContactComponent::class)->name('admin.contact');
 
+    Route::get('/admin/settings' , \App\Http\Livewire\Admin\AdminSettingComponent::class)->name('admin.settings');
+
+
 
 
 });
