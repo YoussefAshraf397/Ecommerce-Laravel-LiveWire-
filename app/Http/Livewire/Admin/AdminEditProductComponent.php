@@ -27,6 +27,8 @@ class AdminEditProductComponent extends Component
     public $category_id;
     public $newImage;
     public $productId ;
+    public $images;
+    public $newImages;
 
 
     public function mount($product_slug)
@@ -45,6 +47,7 @@ class AdminEditProductComponent extends Component
          $this->image= $product->image;
          $this->category_id = $product->category_id;
          $this->productId = $product->id;
+         $this->images = $product->images;
 
     }
 
@@ -107,6 +110,20 @@ class AdminEditProductComponent extends Component
             $this->newImage->storeAs('products' , $imageName) ;
             $product->image = $imageName ;
         }
+
+        if ($this->newImages)
+        {
+            $imagesName = '';
+            foreach ($this->newImages as $key=>$image)
+            {
+                $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension() ;
+                $image->storeAs('products',$imgName);
+                $imagesName = $imagesName.','.$imgName;
+            }
+            $product->images = $imagesName;
+        }
+
+
         $product->category_id = $this->category_id ;
 
         $product->save() ;

@@ -25,6 +25,7 @@ class AdminAddProductComponent extends Component
     public $quantity;
     public $image;
     public $category_id;
+    public $images;
 
     public function mount()
     {
@@ -51,7 +52,8 @@ class AdminAddProductComponent extends Component
             'featured' => 'required' ,
             'quantity' => 'required | numeric' ,
             'image' => 'required' ,
-            'category_id' => 'required'
+            'category_id' => 'required' ,
+            'images' => 'required'
         ]);
     }
 
@@ -69,7 +71,8 @@ class AdminAddProductComponent extends Component
             'featured' => 'required' ,
             'quantity' => 'required | numeric' ,
             'image' => 'required' ,
-            'category_id' => 'required'
+            'category_id' => 'required' ,
+            'images' => 'required'
         ]);
 
         $product = new Product() ;
@@ -88,6 +91,18 @@ class AdminAddProductComponent extends Component
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension() ;
         $this->image->storeAs('products' , $imageName) ;
         $product->image = $imageName ;
+
+        if($this->images)
+        {
+            $imagesName = '';
+            foreach ($this->images as $key=>$image)
+            {
+                $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension() ;
+                $image->storeAs('products',$imgName);
+                $imagesName = $imagesName.','.$imgName;
+            }
+            $product->images = $imagesName;
+        }
 
         $product->category_id = $this->category_id ;
 
