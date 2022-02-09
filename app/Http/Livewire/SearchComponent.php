@@ -32,6 +32,8 @@ class SearchComponent extends Component
         return redirect()->route('product.cart');
     }
     use WithPagination  ;
+    protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         if($this->sorting == "date")
@@ -55,4 +57,5 @@ class SearchComponent extends Component
 
         return view('livewire.search-component' , ['products' => $products , 'categories' => $categories])->layout('layouts.base');
     }
+
 }
