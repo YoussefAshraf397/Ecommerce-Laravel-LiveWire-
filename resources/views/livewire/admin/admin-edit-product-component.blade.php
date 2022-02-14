@@ -139,15 +139,14 @@
                                     <input type="file"  class="input-file" wire:model="newImages" multiple/>
                                     @if($newImages)
                                         @foreach($newImages as $img)
-                                            <image src="{{$img->temporaryUrl()}}" width="120" />
+                                            @if($img)
+                                                 <image src="{{$img->temporaryUrl()}}" width="120" />
+                                            @endif
                                         @endforeach
 
                                     @else
-                                        @php
-                                            $images = explode(',',$images)
-                                        @endphp
                                         @foreach($images as $imgg)
-                                            <image src="{{asset('assets/images/products/'.$imgg)}}" width="120" />
+                                            <image src="{{asset('assets/images/products'.'/'.$imgg)}}" width="120" />
                                         @endforeach
                                     @endif
                                     @error('images') <p class="text-danger">{{$message}}</p> @enderror

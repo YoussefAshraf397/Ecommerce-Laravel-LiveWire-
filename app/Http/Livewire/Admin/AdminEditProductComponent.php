@@ -47,7 +47,7 @@ class AdminEditProductComponent extends Component
          $this->image= $product->image;
          $this->category_id = $product->category_id;
          $this->productId = $product->id;
-         $this->images = $product->images;
+         $this->images = explode(',' , $product->images) ;
 
     }
 
@@ -72,6 +72,12 @@ class AdminEditProductComponent extends Component
             'image' => 'required' ,
             'category_id' => 'required'
         ]);
+        if ($this->newImage)
+        {
+            $this->validateOnly($fields , [
+                'newImage' => 'required'
+            ]);
+        }
     }
 
     public function editProduct()
@@ -91,6 +97,13 @@ class AdminEditProductComponent extends Component
             'category_id' => 'required'
         ]);
 
+        if ($this->newImage)
+        {
+            $this->validate([
+                'newImage' => 'required'
+            ]);
+        }
+
         $product = Product::find($this->productId);
 
         $product->name = $this->name ;
@@ -106,6 +119,8 @@ class AdminEditProductComponent extends Component
 
         if($this->newImage)
         {
+            unlink('assets/images/products'.'/'.$product->image);
+
             $imageName = Carbon::now()->timestamp.'.'.$this->newImage->extension() ;
             $this->newImage->storeAs('products' , $imageName) ;
             $product->image = $imageName ;
@@ -113,6 +128,17 @@ class AdminEditProductComponent extends Component
 
         if ($this->newImages)
         {
+            if ($product->images)
+            {
+                $images = explode(',' , $product->images);
+                foreach ($images as $image)
+                {
+                    if($image)
+                    {
+                        unlink('assets/images/products'.'/'.$product->image);
+                    }
+                }
+            }
             $imagesName = '';
             foreach ($this->newImages as $key=>$image)
             {
