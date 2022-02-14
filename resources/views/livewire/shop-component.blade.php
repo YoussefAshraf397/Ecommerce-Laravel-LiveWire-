@@ -118,7 +118,7 @@
 {{--                    </ul>--}}
 {{--                    <p class="result-count">Showing {{$products->lastItem()}} of {{$products->total()}} result</p>--}}
 {{--                </div>--}}
-                {{$products->links("pagination::bootstrap-4")}}
+                {{$products->links("")}}
             </div><!--end main products area-->
 
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
